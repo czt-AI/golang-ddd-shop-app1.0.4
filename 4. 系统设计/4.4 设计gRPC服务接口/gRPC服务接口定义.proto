@@ -1,0 +1,83 @@
+syntax = "proto3";
+
+package shop;
+
+// 用户服务定义
+service UserService {
+  rpc GetUser (UserRequest) returns (UserResponse);
+  rpc ListUsers (ListUsersRequest) returns (ListUsersResponse);
+}
+
+// 商品服务定义
+service ProductService {
+  rpc GetProduct (ProductRequest) returns (ProductResponse);
+  rpc ListProducts (ListProductsRequest) returns (ListProductsResponse);
+}
+
+// 订单服务定义
+service OrderService {
+  rpc CreateOrder (OrderRequest) returns (OrderResponse);
+  rpc ListOrders (ListOrdersRequest) returns (ListOrdersResponse);
+}
+
+// 用户请求结构
+message UserRequest {
+  int32 id = 1;
+}
+
+// 用户响应结构
+message UserResponse {
+  string username = 1;
+  string email = 2;
+}
+
+// 用户列表请求结构
+message ListUsersRequest {
+}
+
+// 用户列表响应结构
+message ListUsersResponse {
+  repeated UserResponse users = 1;
+}
+
+// 商品请求结构
+message ProductRequest {
+  int32 id = 1;
+}
+
+// 商品响应结构
+message ProductResponse {
+  string name = 1;
+  string description = 2;
+  double price = 3;
+}
+
+// 商品列表请求结构
+message ListProductsRequest {
+}
+
+// 商品列表响应结构
+message ListProductsResponse {
+  repeated ProductResponse products = 1;
+}
+
+// 订单请求结构
+message OrderRequest {
+  int32 userId = 1;
+  repeated int32 productIds = 2;
+}
+
+// 订单响应结构
+message OrderResponse {
+  int32 orderId = 1;
+  string status = 2;
+}
+
+// 订单列表请求结构
+message ListOrdersRequest {
+}
+
+// 订单列表响应结构
+message ListOrdersResponse {
+  repeated OrderResponse orders = 1;
+}

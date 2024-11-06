@@ -1,0 +1,96 @@
+接口规格说明书.docx
+---
+
+**接口规格说明书**
+
+**一、概述**
+本说明书旨在描述电商应用系统中各个模块之间的接口规范，包括接口名称、参数、返回值等，为开发团队提供接口实现和使用的指导。
+
+**二、接口列表**
+
+**1. 用户模块接口**
+- **接口名称**：/user/register
+  - **参数**：
+    - username (string): 用户名
+    - password (string): 密码
+    - email (string): 邮箱
+    - phone (string): 手机号码
+  - **返回值**：
+    - success (bool): 是否注册成功
+    - message (string): 返回信息
+
+- **接口名称**：/user/login
+  - **参数**：
+    - username (string): 用户名
+    - password (string): 密码
+  - **返回值**：
+    - token (string): 登录令牌
+    - message (string): 返回信息
+
+**2. 商品模块接口**
+- **接口名称**：/product/list
+  - **参数**：
+    - category (string): 商品分类
+    - page (int): 页码
+    - limit (int): 每页数量
+  - **返回值**：
+    - products (array): 商品列表
+    - total (int): 总商品数量
+    - message (string): 返回信息
+
+- **接口名称**：/product/details
+  - **参数**：
+    - productId (int): 商品ID
+  - **返回值**：
+    - product (object): 商品详情
+    - message (string): 返回信息
+
+**3. 订单模块接口**
+- **接口名称**：/order/create
+  - **参数**：
+    - userId (int): 用户ID
+    - productId (int): 商品ID
+    - quantity (int): 数量
+  - **返回值**：
+    - orderId (int): 订单ID
+    - message (string): 返回信息
+
+- **接口名称**：/order/status
+  - **参数**：
+    - orderId (int): 订单ID
+  - **返回值**：
+    - status (string): 订单状态
+    - message (string): 返回信息
+
+**4. 支付模块接口**
+- **接口名称**：/payment/create
+  - **参数**：
+    - orderId (int): 订单ID
+    - paymentMethod (string): 支付方式
+  - **返回值**：
+    - paymentId (string): 支付ID
+    - message (string): 返回信息
+
+- **接口名称**：/payment/verify
+  - **参数**：
+    - paymentId (string): 支付ID
+  - **返回值**：
+    - success (bool): 是否支付成功
+    - message (string): 返回信息
+
+**5. 物流跟踪模块接口**
+- **接口名称**：/logistics/status
+  - **参数**：
+    - orderId (int): 订单ID
+  - **返回值**：
+    - logisticsStatus (string): 物流状态
+    - message (string): 返回信息
+
+**六、安全性**
+- 所有接口应使用HTTPS协议进行加密传输。
+- 接口调用应进行身份验证和授权。
+
+**七、附录**
+- 接口参数和返回值的数据类型定义
+
+---

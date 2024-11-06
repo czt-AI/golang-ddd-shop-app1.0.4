@@ -1,0 +1,106 @@
+**RESTful API设计规范**
+
+**一、概述**
+本文档旨在为电商应用系统定义RESTful API的设计规范，包括URL设计、请求方法、响应格式等。
+
+**二、URL设计**
+1. 使用清晰、描述性的URL路径。
+2. 使用名词复数形式表示资源集合。
+3. 使用HTTP方法表示操作类型。
+
+**三、请求方法**
+1. GET：用于获取资源列表或单个资源。
+2. POST：用于创建新的资源。
+3. PUT：用于更新现有资源。
+4. DELETE：用于删除资源。
+
+**四、响应格式**
+1. 使用JSON作为响应数据格式。
+2. 响应状态码应符合HTTP规范。
+3. 响应体应包含必要的字段，如数据、状态码、错误信息等。
+
+**五、错误处理**
+1. 错误信息应以JSON格式返回。
+2. 错误码应符合HTTP规范。
+3. 错误信息应包括错误描述和可能的解决方案。
+
+**六、示例**
+
+**1. 获取用户列表**
+- URL：/users
+- 请求方法：GET
+- 响应：
+  ```json
+  {
+    "status": "success",
+    "data": [
+      {
+        "id": 1,
+        "username": "user1",
+        "email": "user1@example.com"
+      },
+      {
+        "id": 2,
+        "username": "user2",
+        "email": "user2@example.com"
+      }
+    ]
+  }
+  ```
+
+**2. 创建新用户**
+- URL：/users
+- 请求方法：POST
+- 请求体：
+  ```json
+  {
+    "username": "newuser",
+    "email": "newuser@example.com"
+  }
+  ```
+- 响应：
+  ```json
+  {
+    "status": "success",
+    "data": {
+      "id": 3,
+      "username": "newuser",
+      "email": "newuser@example.com"
+    }
+  }
+  ```
+
+**3. 更新用户信息**
+- URL：/users/1
+- 请求方法：PUT
+- 请求体：
+  ```json
+  {
+    "email": "updated@example.com"
+  }
+  ```
+- 响应：
+  ```json
+  {
+    "status": "success",
+    "data": {
+      "id": 1,
+      "username": "user1",
+      "email": "updated@example.com"
+    }
+  }
+  ```
+
+**4. 删除用户**
+- URL：/users/1
+- 请求方法：DELETE
+- 响应：
+  ```json
+  {
+    "status": "success",
+    "message": "User deleted successfully"
+  }
+  ```
+
+**七、总结**
+本文档定义了电商应用系统的RESTful API设计规范，旨在提供一致、易用的API接口，方便开发者使用。
